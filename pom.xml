@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        SPRING BOOT PARENT
+        This is the "opinionated" part of Spring Boot.
+        It manages all dependency versions for you — no version conflicts.
+    -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.4</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.example</groupId>
+    <artifactId>student-api</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>student-api</name>
+    <description>Spring Boot Student Management API</description>
+
+    <properties>
+        <java.version>23</java.version>
+    </properties>
+
+    <dependencies>
+
+        <!--
+            STARTER: WEB
+            Pulls in Spring MVC + embedded Tomcat.
+            This is all you need to build REST APIs.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--
+            STARTER: DATA JPA
+            Pulls in Hibernate (ORM) + Spring Data JPA.
+            Lets you interact with DB using Java objects instead of SQL.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!--
+            STARTER: VALIDATION
+            Enables @NotBlank, @Email, @Min etc. on your model fields.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!--
+            H2 DATABASE
+            In-memory database — no installation needed.
+            Perfect for learning and development.
+            scope=runtime means it's only needed when the app runs, not to compile.
+        -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!--
+            SPRING KAFKA
+            Provides KafkaTemplate (producer) and @KafkaListener (consumer).
+            Auto-configures everything based on application.properties.
+        -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
+        <!--
+            SPRINGDOC OPENAPI (Swagger UI)
+            Auto-generates interactive API documentation by scanning
+            all your @RestController classes at startup.
+            No configuration needed — just add this dependency.
+            UI available at: http://localhost:8080/swagger-ui.html
+        -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+
+        <!--
+            TEST STARTER
+            JUnit 5 + Mockito + Spring Test utilities.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--
+                This plugin packages your app as an executable JAR.
+                Run it with: java -jar student-api.jar
+                The embedded Tomcat is bundled inside.
+            -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
